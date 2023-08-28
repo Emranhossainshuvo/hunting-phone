@@ -6,8 +6,8 @@ const showPhone = async (phone) => {
 
 
 
+const phoneContainer = document.getElementById('card-container');
 const phoneManager = (phones) => {
-    const phoneContainer = document.getElementById('card-container');
     phones.forEach(phone => {
         const phoneCard = document.createElement('div');
         phoneCard.classList = `card w-5/6 bg-gray-200 mt-4 shadow-xl`;
@@ -23,8 +23,11 @@ const phoneManager = (phones) => {
                     </div>
          `;
             phoneContainer.appendChild(phoneCard);
-    })
-    console.log(phones)
+    }); if(phoneContainer.childNodes.length > 1){
+        const searchFieldContainer = document.getElementById('search-field-container');
+        searchFieldContainer.classList.remove('mb-96')
+    }
+    console.log(phoneContainer.childNodes.length)
 }
 
 
@@ -32,6 +35,7 @@ document.getElementById('search-button').addEventListener('click', function(){
     const searchElement = document.getElementById('search-field');
     const searchValue = searchElement.value;
     showPhone(searchValue);
+    searchElement.value = '';
 })
 
 showPhone();
